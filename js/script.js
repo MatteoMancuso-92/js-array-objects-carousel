@@ -1,11 +1,32 @@
-const arrImages = [
-	'img/01.webp',
-	'img/02.webp',
-	'img/03.webp',
-	'img/04.webp',
-	'img/05.webp',
-];
-
+let imagesArray = [
+    {
+        images: "01.webp",
+        title: "Spiderman",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    },
+    {
+        images: "02.webp",
+        title: "Ratchet & Clank",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    },
+    {
+        images: "03.webp",
+        title: "Fortnite",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    },
+    {
+        images: "04.webp",
+        title: "Cat",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    },
+    {
+        images: "05.webp",
+        title: "The Avengers",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    },
+  
+  ]
+  
 const containerHighlighted = document.querySelector('.highlighted');
 const containerThumbs = document.querySelector('.thumbs');
 
