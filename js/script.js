@@ -1,4 +1,4 @@
-const images = [
+const arrayImage = [
     {
         image: 'img/01.webp',
         title: 'Marvel\'s Spiderman Miles Morale',
@@ -21,17 +21,46 @@ const images = [
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     }
 ];
-  
+
+setInterval(() => {      
+
+    	title[activeIndex].classList.remove('active');
+		text[activeIndex].classList.remove('active');
+        listHighlighted[activeIndex].classList.remove('active');
+		listThumbs[activeIndex].classList.remove('active');
+		// settiamo il nuovo valore di active index
+		activeIndex++;
+		if (activeIndex >= listHighlighted.length) {
+			activeIndex = 0;
+		}
+		// alla nuova immagine attiva aggiungiamo la classe active
+        title[activeIndex].classList.add('active');
+		text[activeIndex].classList.add('active');
+        listHighlighted[activeIndex].classList.add('active');
+		listThumbs[activeIndex].classList.add('active');
+
+	}, 2500);
+    
+
+
 const containerHighlighted = document.querySelector('.highlighted');
 const containerThumbs = document.querySelector('.thumbs');
 
-for (let i = 0; i < arrImages.length; i++) {
-	containerHighlighted.innerHTML += `<img src="${arrImages[i]}" alt="" class="${i == 0 ? 'active' : ''}">`;
-	containerThumbs.innerHTML += `<img src="${arrImages[i]}" alt="" class="${i == 0 ? 'active' : ''}">`;
+
+for (let i = 0; i < arrayImage.length; i++) {
+	containerHighlighted.innerHTML += `
+    
+        <img src="${arrayImage[i].image}" alt=""  class="${i == 0 ? 'active' : ''}">
+        <div class="title ${i == 0 ? 'active' : ''} ">${arrayImage[i].title} </div>
+        <div class="text ${i == 0 ? 'active' : ''}"> ${arrayImage[i].text}  </div>`;
+        
+        containerThumbs.innerHTML += `<img src="${arrayImage[i].image}" alt="" class="${i == 0 ? 'active' : ''}">`;
 }
 
 
 // selezionimo le immagini nell'html
+const title = document.querySelectorAll('.title');
+const text = document.querySelectorAll('.text');
 const listHighlighted = document.querySelectorAll('.highlighted img');
 // selezioniamo le miniature
 const listThumbs = document.querySelectorAll('.thumbs img');
@@ -47,7 +76,9 @@ let activeIndex = 0;
 btnNext.addEventListener('click',
 	function() {
 		// dall'immagine attiva tolgo la classe active
-		listHighlighted[activeIndex].classList.remove('active');
+        title[activeIndex].classList.remove('active');
+		text[activeIndex].classList.remove('active');
+        listHighlighted[activeIndex].classList.remove('active');
 		listThumbs[activeIndex].classList.remove('active');
 		// settiamo il nuovo valore di active index
 		activeIndex++;
@@ -55,7 +86,9 @@ btnNext.addEventListener('click',
 			activeIndex = 0;
 		}
 		// alla nuova immagine attiva aggiungiamo la classe active
-		listHighlighted[activeIndex].classList.add('active');
+        title[activeIndex].classList.add('active');
+		text[activeIndex].classList.add('active');
+        listHighlighted[activeIndex].classList.add('active');
 		listThumbs[activeIndex].classList.add('active');
 	}
 );
@@ -63,14 +96,20 @@ btnNext.addEventListener('click',
 btnPrev.addEventListener('click',
 	function() {
 		// dall'immagine attiva tolgo la classe active
-		listHighlighted[activeIndex].classList.remove('active');
+        title[activeIndex].classList.remove('active');
+		text[activeIndex].classList.remove('active');
+        listHighlighted[activeIndex].classList.remove('active');
 		listThumbs[activeIndex].classList.remove('active');
+       
 		// settiamo il nuovo valore di active index
 		activeIndex--;
 		if (activeIndex < 0) {
 			activeIndex = listHighlighted.length - 1;
 		}
 		// alla nuova immagine attiva aggiungiamo la classe active
+        
+        title[activeIndex].classList.add('active');
+		text[activeIndex].classList.add('active');
 		listHighlighted[activeIndex].classList.add('active');
 		listThumbs[activeIndex].classList.add('active');
 	}
@@ -81,16 +120,21 @@ for (let i = 0; i < listThumbs.length; i++) {
 	listThumbs[i].addEventListener('click',
 		function() {
 			console.log('cliccata la miniature in posizione ' + i)
+            
+            title[activeIndex].classList.remove('active');
+            text[activeIndex].classList.remove('active');
 			listHighlighted[activeIndex].classList.remove('active');
 			listThumbs[activeIndex].classList.remove('active');
-			activeIndex = i;
-			listHighlighted[activeIndex].classList.add('active');
+			
+            activeIndex = i;
+            
+            title[activeIndex].classList.add('active');
+		    text[activeIndex].classList.add('active');
+            listHighlighted[activeIndex].classList.add('active');
 			listThumbs[activeIndex].classList.add('active');
 		}
 	)
 }
-
-
 
 /*
 btnNext ---> al click fai function() {...}
